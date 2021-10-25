@@ -3,20 +3,16 @@ import os
 import platform
 import classes
 
-def getMostRecentBudget(system, *args):
+def getMostRecentBudget(*args):
 
-    if system == 'Darwin':
-        slash = '/'
-
-    elif system == 'Windows':
-        slash = '\\'
-
+		# /private/var/mobile/Library/Mobile Documents/iCloud~com~omz-software~Pythonista3/Documents/budget-keeper/main.py
     script_dir = os.path.dirname(os.path.realpath(__file__))
-    higher_dir = slash.join(script_dir.split(slash)[:-2])    
-    budget_dir = higher_dir + slash + 'budgets'
-    budget_list = os.listdir(budget_dir)    
-    budget_name = sorted(budget_list, reverse=True)[0]    
-    budget_path = budget_dir + slash + budget_name
+    higher_dir = '/'.join(script_dir.split('/')[:-1]) # how many dirs to go up
+    budget_dir = higher_dir + '/budgets'
+    budget_list = os.listdir(budget_dir)
+    budget_name = sorted(budget_list, reverse=True)[0]
+    budget_path = budget_dir + '/' + budget_name
+    # /private/var/mobile/Library/Mobile Documents/iCloud~com~omz-software~Pythonista3/Documents/budgets/<latest budget>.txt
 
     return budget_path
 

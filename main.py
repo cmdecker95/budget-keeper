@@ -5,21 +5,22 @@ import classes
 import functions
 
 def main():
-
-	system = platform.system()
-
-	if system == 'Windows':
-		function = input("Which function shall we run?")
-		values = input("Enter your values separated by commas:")
-		args = [function] + list(map(lambda x: x.strip(), values.split(',')))
-
-	elif system == 'Darwin':
-		args = sys.argv[1:]
-
-	budget_path = functions.getMostRecentBudget(system, *args)
+	"""Docstring: `main`
+	Updates budget file, given arguments passed from Shortcut.
 	
+	Shortcut will encode and pass a string for function selction.
+	Script reaches for budget file via relative pathing, reads it, and writes over it.
+	- Reading is done by creating objects out of the budget file.
+	- Writing paradigm is defined by the function."""
+
+	# Shortcut splits user input by line break, then passes each line as an argument.
+	args = sys.argv[1:]
+
+	# Finds the budget file, and converts it to a Budget object
+	budget_path = functions.getMostRecentBudget(*args)
 	my_budget = classes.Budget(budget_path)
 
+	# Call selected function to manipulate the Budget object
 	if args[0] == 'expense':
 		functions.expense(my_budget, *args)
 
@@ -45,8 +46,8 @@ def main():
 	else:
 		print('Invalid function')
 
+	# Polish up the budget file, then calculate and output final values
 	my_budget.calculate_budget()
-
 	my_budget.current_budget()
 
 if __name__ == '__main__':
