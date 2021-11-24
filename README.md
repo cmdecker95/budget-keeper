@@ -1,4 +1,4 @@
-## Easy as 1, 2, 3 🤑
+## Budget balancing, simplified.
 
 ### 1. Shortcuts App & UI
 
@@ -10,4 +10,4 @@ The user input is parsed into arguments (by newline), then encoded and concatena
 
 ### 3. File Syncing
 
-Pythonista doesn't currently support accessing iCloud files *outside* its own working directory, so the `budgets/` directory sits at the root of `//iCloud/Pythonista/`. Working Copy syncs its local copy of this repo to `//iCloud/Pythonista/budget-keeper/` so that it can access the budget files.
+Pythonista doesn't currently support accessing iCloud files _outside_ its own working directory, so the `budgets/` directory sits at the root of `//iCloud/Pythonista/`. Working Copy syncs its local copy of this repo to `//iCloud/Pythonista/budget-keeper/` so that it can access the budget files.
