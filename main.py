@@ -1,54 +1,54 @@
-
-import platform
 import sys
 import classes
 import functions
 
+
 def main():
-	"""Docstring: `main`
-	Updates budget file, given arguments passed from Shortcut.
-	
-	Shortcut will encode and pass a string for function selction.
-	Script reaches for budget file via relative pathing, reads it, and writes over it.
-	- Reading is done by creating objects out of the budget file.
-	- Writing paradigm is defined by the function."""
+    """Docstring: `main`
+    Updates budget file, given arguments passed from Shortcut.
 
-	# Shortcut splits user input by line break, then passes each line as an argument.
-	args = sys.argv[1:]
+    Shortcut will encode and pass a string for function selection.
+    Script reaches for budget file via relative pathing, reads it, and writes over it.
+    - Reading is done by creating objects out of the budget file.
+    - Writing paradigm is defined by the function."""
 
-	# Finds the budget file, and converts it to a Budget object
-	budget_path = functions.getMostRecentBudget(*args)
-	my_budget = classes.Budget(budget_path)
+    # Shortcut splits user input by line break, then passes each line as an argument.
+    args = sys.argv[1:]
 
-	# Call selected function to manipulate the Budget object
-	if args[0] == 'expense':
-		functions.expense(my_budget, *args)
+    # Finds the budget file, and converts it to a Budget object
+    budget_path = functions.get_most_recent_budget(*args)
+    my_budget = classes.Budget(budget_path)
 
-	elif args[0] == 'expenseh':
-		functions.expenseh(my_budget, *args)
-	
-	elif args[0] == 'credit':
-		functions.credit(my_budget, *args)
-	
-	elif args[0] == 'credith':
-		functions.credith(my_budget, *args)
+    # Call selected function to manipulate the Budget object
+    if args[0] == 'expense':
+        functions.exp_cred(my_budget, '-', '+', *args)
 
-	elif args[0] == 'deposit':
-		functions.deposit(my_budget, *args)
+    elif args[0] == 'expenseh':
+        functions.exp_cred_h(my_budget, '+', *args)
 
-	elif args[0] == 'withdrawal':
-		functions.withdrawal(my_budget, *args)
+    elif args[0] == 'credit':
+        functions.exp_cred(my_budget, '+', '-', *args)
 
-	elif args[0] == 'combine':
-		my_budget.calculate_budget()
-		functions.combine(my_budget, *args)
+    elif args[0] == 'credith':
+        functions.exp_cred_h(my_budget, '-', *args)
 
-	else:
-		print('Invalid function')
+    elif args[0] == 'deposit':
+        functions.deposit(my_budget, *args)
 
-	# Polish up the budget file, then calculate and output final values
-	my_budget.calculate_budget()
-	my_budget.current_budget()
+    elif args[0] == 'withdrawal':
+        functions.withdrawal(my_budget, *args)
+
+    elif args[0] == 'combine':
+        my_budget.calculate_budget()
+        functions.combine(my_budget, *args)
+
+    else:
+        print('Invalid function')
+
+    # Polish up the budget file, then calculate and output final values
+    my_budget.calculate_budget()
+    my_budget.current_budget()
+
 
 if __name__ == '__main__':
-	main()
+    main()
