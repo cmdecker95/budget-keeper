@@ -15,7 +15,10 @@ def get_most_recent_budget():
 def exp_cred(budget, exp_sign, cred_sign, *args):
     value = float(args[1])
     name = args[2].title()
-    section = budget.buy_sections[args[3].title().strip()] if len(args) == 4 else budget.buy_sections['Spend']
+    if len(args) == 4:
+        section = budget.buy_sections[args[3].title().strip()]
+    else:
+        section = budget.buy_sections['Spend']
 
     item = f'{value:.2f} {name}'
 
