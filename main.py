@@ -48,6 +48,7 @@ def main():
     # Polish up the budget file, then calculate and output final values
     my_budget.calculate_budget()
     my_budget.current_budget()
+    my_budget.current_charges()
 
 
 if __name__ == '__main__':
