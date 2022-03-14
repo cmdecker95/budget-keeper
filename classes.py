@@ -162,5 +162,5 @@ class Budget:
                 print(f'{section.title}: ${section.remainder:.2f}')
 
     def current_charges(self):
-        print(f"Christian: ${self.credit_sections['Tabs'].christian}")
-        print(f"Hayley: ${self.credit_sections['Tabs'].hayley}")
+        print(f"Christian: ${self.credit_sections['Tabs'].christian:.2f}")
+        print(f"Hayley: ${self.credit_sections['Tabs'].hayley:.2f}")
