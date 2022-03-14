@@ -65,7 +65,7 @@ class Section:
         header = self.str.split('\n')[0]
         header_info = header.split(':')
         self.title = header_info[0]
-        if len(header_info) == 2:
+        if header_info[1]:
             self.allotment = self.remainder = float(header_info[1].strip())
 
         for item_given in self.str.split('\n')[1:]:
