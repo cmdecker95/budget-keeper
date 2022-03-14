@@ -16,7 +16,7 @@ def main():
     args = sys.argv[1:]
 
     # Finds the budget file, and converts it to a Budget object
-    budget_path = functions.get_most_recent_budget(*args)
+    budget_path = functions.get_most_recent_budget()
     my_budget = classes.Budget(budget_path)
 
     # Call selected function to manipulate the Budget object
